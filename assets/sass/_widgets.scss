@@ -1,0 +1,79 @@
+// main: style.scss
+
+
+/* Make sure select elements fit in widgets. */
+
+.widget {
+	margin-bottom: 30px;
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	select {
+		max-width: 100%;
+	}
+	a {
+		text-decoration: none;
+		line-height: 1.75;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+	&:last-child {
+		margin-bottom: 20px;
+	}
+}
+
+
+.widget-title {
+	padding-bottom: 15px;
+    margin-bottom: 20px;
+	margin-top: 0;
+    border-bottom: 2px solid #f5f5f5;
+    position: relative;
+	font-weight: 700;
+}
+
+.widget_pages ul li,
+.widget_categories ul li,
+.widget_archive ul li,
+.widget_meta ul li,
+.widget_nav_menu ul li,
+.widget_rss ul li {
+	display: block;
+	padding-bottom: 12px;
+	margin-bottom: 12px;
+	border-bottom: 1px solid #eee;
+	position: relative;
+	&::before{
+		color: #ccc;
+		content: "\f0da";
+		font-family: 'FontAwesome';
+		font-size: 15px;
+		position: absolute;
+		top: 3px;
+		left: 2px;
+	}
+	a {
+		padding-left: 18px;
+	}
+}
+
+.widget_tag_cloud {
+	a {
+	    border: 1px solid #e9e9e9;
+	    border-radius: 2px;
+	    color: #888;
+	    display: inline-block;
+	    font-size: 13px !important;
+	    margin-bottom: 5px;
+	    padding: 2px 10px 3px;
+		&:hover {
+			border-color: $color__primary;
+			color: $color__primary;
+			text-decoration: none;
+		}
+	}
+
+}

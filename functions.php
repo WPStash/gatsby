@@ -36,15 +36,30 @@ function gatsby_setup() {
 	add_theme_support( 'title-tag' );
 
 	/*
+	 * Enable support for custom logo.
+	 *
+	 */
+	add_theme_support( 'custom-logo', array(
+		'height'      => 49,
+		'width'       => 162,
+		'flex-height' => true,
+	) );
+
+
+	/*
 	 * Enable support for Post Thumbnails on posts and pages.
 	 *
 	 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 	 */
 	add_theme_support( 'post-thumbnails' );
+	add_image_size( 'gatsby-thumb-default', 260, 190, true );
+	add_image_size( 'gatsby-thumb-layout2', 642, 300, true );
+	add_image_size( 'gatsby-thumb-layout3', 305, 175, true );
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
 		'primary' => esc_html__( 'Primary', 'gatsby' ),
+		'footer'  => esc_html__( 'Footer', 'gatsby' ),
 	) );
 
 	/*
@@ -57,18 +72,6 @@ function gatsby_setup() {
 		'comment-list',
 		'gallery',
 		'caption',
-	) );
-
-	/*
-	 * Enable support for Post Formats.
-	 * See https://developer.wordpress.org/themes/functionality/post-formats/
-	 */
-	add_theme_support( 'post-formats', array(
-		'aside',
-		'image',
-		'video',
-		'quote',
-		'link',
 	) );
 
 	// Set up the WordPress core custom background feature.
@@ -92,6 +95,51 @@ function gatsby_content_width() {
 }
 add_action( 'after_setup_theme', 'gatsby_content_width', 0 );
 
+
+if ( ! function_exists( 'gatsby_fonts_url' ) ) :
+/**
+ * @return string Google fonts URL for the theme.
+ */
+function gatsby_fonts_url() {
+	$fonts_url = '';
+	$fonts     = array();
+	$subsets   = 'latin,latin-ext';
+
+	/*
+	 * Translators: If there are characters in your language that are not supported
+	 * by Noto Sans, translate this to 'off'. Do not translate into your own language.
+	 */
+	if ( 'off' !== _x( 'on', 'Source Sans Pro font: on or off', 'gatsby' ) ) {
+		$fonts[] = 'Source Sans Pro:400italic,600italic,700italic,400,600,700';
+	}
+
+	/*
+	 * Translators: To add an additional character subset specific to your language,
+	 * translate this to 'greek', 'cyrillic', 'devanagari' or 'vietnamese'. Do not translate into your own language.
+	 */
+	$subset = _x( 'no-subset', 'Add new subset (greek, cyrillic, devanagari, vietnamese)', 'gatsby' );
+
+	if ( 'cyrillic' == $subset ) {
+		$subsets .= ',cyrillic,cyrillic-ext';
+	} elseif ( 'greek' == $subset ) {
+		$subsets .= ',greek,greek-ext';
+	} elseif ( 'devanagari' == $subset ) {
+		$subsets .= ',devanagari';
+	} elseif ( 'vietnamese' == $subset ) {
+		$subsets .= ',vietnamese';
+	}
+
+	if ( $fonts ) {
+		$fonts_url = add_query_arg( array(
+			'family' => urlencode( implode( '|', $fonts ) ),
+			'subset' => urlencode( $subsets ),
+		), 'https://fonts.googleapis.com/css' );
+	}
+
+	return $fonts_url;
+}
+endif;
+
 /**
  * Register widget area.
  *
@@ -104,8 +152,18 @@ function gatsby_widgets_init() {
 		'description'   => esc_html__( 'Add widgets here.', 'gatsby' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
+		'before_title'  => '<h4 class="widget-title">',
+		'after_title'   => '</h4>',
+	) );
+
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer', 'gatsby' ),
+		'id'            => 'footer',
+		'description'   => esc_html__( 'Add widgets here.', 'gatsby' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h4 class="widget-title">',
+		'after_title'   => '</h4>',
 	) );
 }
 add_action( 'widgets_init', 'gatsby_widgets_init' );
@@ -114,10 +172,53 @@ add_action( 'widgets_init', 'gatsby_widgets_init' );
  * Enqueue scripts and styles.
  */
 function gatsby_scripts() {
+
+	// Add custom fonts, used in the main stylesheet.
+	wp_enqueue_style( 'gatsby-fonts', gatsby_fonts_url(), array(), null );
+
+	// Add Font Awesome, used in the main stylesheet.
+	wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/assets/font-awesome/font-awesome.min.css', array(), '4.5' );
+
 	wp_enqueue_style( 'gatsby-style', get_stylesheet_uri() );
+	// Add extra styling to patus-style
+	$primary   = get_theme_mod( 'primary_color', '#e40018' );
+	$secondary = get_theme_mod( 'secondary_color', '#494949' );
+	$custom_css = "
+			a{color: #{$secondary}; }
+			.entry-meta a,
+			.main-navigation a:hover,
+			.main-navigation .current_page_item > a,
+			.main-navigation .current-menu-item > a,
+			.main-navigation .current_page_ancestor > a,
+			.widget_tag_cloud a:hover,
+			.social-links ul a:hover::before,
+			a:hover
+			 {
+				 color : {$primary};
+			 }
+			button, input[type=\"button\"], input[type=\"reset\"], input[type=\"submit\"]{
+				background: {$primary};
+				border-color : {$primary};
+			}
+			.widget_tag_cloud a:hover { border-color : {$primary};}
+			.main-navigation a,
+			h2.entry-title a,
+			h1.entry-title,
+			.widget-title,
+			.footer-staff-picks h3
+			{
+				color: {$secondary};
+			}
+			button:hover, input[type=\"button\"]:hover,
+			input[type=\"reset\"]:hover,
+			input[type=\"submit\"]:hover {
+					background: {$secondary};
+					border-color: {$secondary};
+			}";
+			//wp_add_inline_style( 'gatsby-style', $custom_css );
 
+	wp_enqueue_script( 'jquery' );
 	wp_enqueue_script( 'gatsby-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
-
 	wp_enqueue_script( 'gatsby-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {

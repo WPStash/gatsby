@@ -25,7 +25,7 @@ function gatsby_posted_on() {
 	);
 
 	$posted_on = sprintf(
-		esc_html_x( 'Posted on %s', 'post date', 'gatsby' ),
+		esc_html_x( ' on %s', 'post date', 'gatsby' ),
 		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 	);
 
@@ -34,10 +34,51 @@ function gatsby_posted_on() {
 		'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 	);
 
-	echo '<span class="posted-on">' . $posted_on . '</span><span class="byline"> ' . $byline . '</span>'; // WPCS: XSS OK.
+	$categories_list = get_the_category_list( esc_html__( ', ', 'gatsby' ) );
+	$posted_in = sprintf( esc_html__( ' in %1$s', 'gatsby' ),  $categories_list);
+
+
+	echo '<span class="byline"> ' . $byline . '</span><span class="posted-on">' . $posted_on . '</span><span class="posted-in">' . $posted_in . '</span>'; // WPCS: XSS OK.
 
 }
 endif;
+
+
+if ( ! function_exists( 'gatsby_posted_on_second' ) ) :
+/**
+ * Prints HTML with meta information for the current post-date/time and author.
+ */
+function gatsby_posted_on_second() {
+	$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
+	if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
+		$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
+	}
+
+	$time_string = sprintf( $time_string,
+		esc_attr( get_the_date( 'c' ) ),
+		esc_html( get_the_date() ),
+		esc_attr( get_the_modified_date( 'c' ) ),
+		esc_html( get_the_modified_date() )
+	);
+
+	$posted_on = sprintf(
+		esc_html_x( ' on %s', 'post date', 'fashify' ),
+		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
+	);
+
+	$byline = sprintf(
+		esc_html_x( 'by %s', 'post author', 'fashify' ),
+		'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
+	);
+
+	$categories_list = get_the_category_list( esc_html__( ', ', 'fashify' ) );
+	$posted_in = sprintf( esc_html__( ' in %1$s', 'fashify' ),  $categories_list);
+
+
+	echo '<span class="byline"> ' . $byline . '</span><span class="posted-on">' . $posted_on . '</span>'; // WPCS: XSS OK.
+}
+endif;
+
 
 if ( ! function_exists( 'gatsby_entry_footer' ) ) :
 /**
@@ -46,35 +87,25 @@ if ( ! function_exists( 'gatsby_entry_footer' ) ) :
 function gatsby_entry_footer() {
 	// Hide category and tag text for pages.
 	if ( 'post' === get_post_type() ) {
-		/* translators: used between list items, there is a space after the comma */
-		$categories_list = get_the_category_list( esc_html__( ', ', 'gatsby' ) );
-		if ( $categories_list && gatsby_categorized_blog() ) {
-			printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'gatsby' ) . '</span>', $categories_list ); // WPCS: XSS OK.
-		}
-
-		/* translators: used between list items, there is a space after the comma */
-		$tags_list = get_the_tag_list( '', esc_html__( ', ', 'gatsby' ) );
-		if ( $tags_list ) {
-			printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'gatsby' ) . '</span>', $tags_list ); // WPCS: XSS OK.
+		$category_list = get_the_category_list( esc_html__( ', ', 'gatsby' ) );
+		$tag_list      = get_the_tag_list( '', ', ', '' );
+		if (  $tag_list != '' ) {
+			echo '<div class="entry-taxonomies">';
+			if ( $category_list ) {
+				echo '<div class="entry-categories">';
+					echo '<span>'. esc_html__( 'Posted in', 'gatsby' ) .'</span>';
+					echo ' ' . $category_list;
+				echo '</div>';
+			}
+			if ( $tag_list ) {
+				echo '<div class="entry-tags">';
+					echo '<span>'. esc_html__( 'Tagged in', 'gatsby' ) .'</span>';
+					echo ' ' . $tag_list;
+				echo '</div>';
+			}
+			echo '</div>';
 		}
 	}
-
-	if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
-		echo '<span class="comments-link">';
-		/* translators: %s: post title */
-		comments_popup_link( sprintf( wp_kses( __( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'gatsby' ), array( 'span' => array( 'class' => array() ) ) ), get_the_title() ) );
-		echo '</span>';
-	}
-
-	edit_post_link(
-		sprintf(
-			/* translators: %s: Name of current post */
-			esc_html__( 'Edit %s', 'gatsby' ),
-			the_title( '<span class="screen-reader-text">"', '"</span>', false )
-		),
-		'<span class="edit-link">',
-		'</span>'
-	);
 }
 endif;
 
@@ -108,6 +139,62 @@ function gatsby_categorized_blog() {
 	}
 }
 
+if ( ! function_exists( 'gatsby_comments' ) ) :
+/**
+ * Template for comments and pingbacks.
+ *
+ * To override this walker in a child theme without modifying the comments template
+ * simply create your own codilight_lite_comment(), and that function will be used instead.
+ *
+ * Used as a callback by wp_list_comments() for displaying the comments.
+ *
+ * @return void
+ */
+ function gatsby_comments( $comment, $args, $depth ) {
+ 	$GLOBALS['comment'] = $comment;
+ 	switch ( $comment->comment_type ) :
+ 		case 'pingback' :
+ 		case 'trackback' :
+ 	?>
+ 	<li class="pingback">
+ 		<p><?php _e( 'Pingback:', 'techone' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __( 'Edit', 'gatsby' ), ' ' ); ?></p>
+ 	<?php
+ 			break;
+ 		default :
+ 	?>
+ 	<li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
+ 		<article id="comment-<?php comment_ID(); ?>" class="comment">
+ 			<div class="comment-author vcard">
+ 				<?php echo get_avatar( $comment, 60 ); ?>
+ 				<?php //printf( '<cite class="fn">%s</cite>', get_comment_author_link() ); ?>
+ 			</div><!-- .comment-author .vcard -->
+
+ 			<div class="comment-wrapper">
+ 				<?php if ( $comment->comment_approved == '0' ) : ?>
+ 					<em><?php _e( 'Your comment is awaiting moderation.', 'gatsby' ); ?></em>
+ 				<?php endif; ?>
+
+ 				<div class="comment-meta comment-metadata">
+ 					<a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>"><time pubdate datetime="<?php comment_time( 'c' ); ?>">
+ 					<?php
+ 						/* translators: 1: date, 2: time */
+ 						printf( __( '%1$s at %2$s', 'techone' ), get_comment_date(), get_comment_time() ); ?>
+ 					</time></a>
+ 				</div><!-- .comment-meta .commentmetadata -->
+ 				<div class="comment-content"><?php comment_text(); ?></div>
+ 				<div class="comment-actions">
+ 					<?php comment_reply_link( array_merge( array( 'after' => '<i class="fa fa-reply"></i>' ), array( 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+ 				</div><!-- .reply -->
+ 			</div> <!-- .comment-wrapper -->
+
+ 		</article><!-- #comment-## -->
+
+ 	<?php
+ 			break;
+ 	endswitch;
+ }
+endif;
+
 /**
  * Flush out the transients used in gatsby_categorized_blog.
  */
@@ -120,3 +207,19 @@ function gatsby_category_transient_flusher() {
 }
 add_action( 'edit_category', 'gatsby_category_transient_flusher' );
 add_action( 'save_post',     'gatsby_category_transient_flusher' );
+
+
+if ( ! function_exists( 'gatsby_the_custom_logo' ) ) :
+/**
+ * Displays the optional custom logo.
+ *
+ * Does nothing if the custom logo is not available.
+ *
+ * @since Twenty Sixteen 1.2
+ */
+function gatsby_the_custom_logo() {
+	if ( function_exists( 'the_custom_logo' ) ) {
+		the_custom_logo();
+	}
+}
+endif;

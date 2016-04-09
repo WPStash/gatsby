@@ -52,6 +52,7 @@ if ( post_password_required() ) {
 				wp_list_comments( array(
 					'style'      => 'ol',
 					'short_ping' => true,
+					'callback'	 => 'gatsby_comments'
 				) );
 			?>
 		</ol><!-- .comment-list -->
@@ -79,7 +80,8 @@ if ( post_password_required() ) {
 	<?php
 	endif;
 
-	comment_form();
+	$args = array( 'comment_notes_before' => '' );
+	comment_form( $args );
 	?>
 
 </div><!-- #comments -->
