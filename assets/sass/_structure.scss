@@ -266,5 +266,10 @@
             color: #aaa;
             text-decoration: none;
         }
+        @include media-breakpoint-down(sm) {
+            float: none;
+            clear: both;
+            text-align: center;
+        }
     }
 }

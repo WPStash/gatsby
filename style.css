@@ -766,6 +766,12 @@ a:hover, a:active {
 	float: left;
 }
 
+@media (max-width: 767px) {
+	.menu-footer-menu-container {
+		float: none;
+	}
+}
+
 .menu-footer-menu-container ul {
 	list-style: none;
 	margin: 0;
@@ -1454,6 +1460,14 @@ a:hover, a:active {
 	text-decoration: none;
 }
 
+@media (max-width: 767px) {
+	.site-info .site-copyright {
+		float: none;
+		clear: both;
+		text-align: center;
+	}
+}
+
 /*--------------------------------------------------------------
 # Content
 --------------------------------------------------------------*/
@@ -1519,14 +1533,6 @@ h1.entry-title {
 	padding: 0;
 	position: relative;
 	z-index: 100;
-}
-
-@media (max-width: 991px) {
-	.entry-info {
-		margin-left: 20px;
-		margin-top: -65px;
-		padding: 15px 0 0 15px;
-	}
 }
 
 .no-post-thumbnail .entry-info {
