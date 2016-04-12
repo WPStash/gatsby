@@ -23,10 +23,11 @@
 function gatsby_custom_header_setup() {
 	add_theme_support( 'custom-header', apply_filters( 'gatsby_custom_header_args', array(
 		'default-image'          => '',
-		'default-text-color'     => '000000',
-		'width'                  => 1000,
-		'height'                 => 250,
-		'flex-height'            => true,
+		'default-text-color'     => 'ffffff',
+		'width'                  => 2000,
+		'height'                 => 145,
+		'flex-height'            => false,
+		'flex-width'             => false,
 		'wp-head-callback'       => 'gatsby_header_style',
 	) ) );
 }
@@ -46,7 +47,7 @@ function gatsby_header_style() {
 	 * get_header_textcolor() options: Any hex value, 'blank' to hide text. Default: HEADER_TEXTCOLOR.
 	 */
 	if ( HEADER_TEXTCOLOR === $header_text_color ) {
-		return;
+		//return;
 	}
 
 	// If we get this far, we have custom styles. Let's do this.
@@ -68,6 +69,12 @@ function gatsby_header_style() {
 		.site-title a,
 		.site-description {
 			color: #<?php echo esc_attr( $header_text_color ); ?>;
+		}
+	<?php endif; ?>
+
+	<?php if ( get_header_image() ) :  ?>
+		.site-header {
+			background-image: url( '<?php header_image(); ?>' );
 		}
 	<?php endif; ?>
 	</style>

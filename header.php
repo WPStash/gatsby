@@ -25,6 +25,7 @@
 	<a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 'gatsby' ); ?></a>
 
 	<header id="masthead" class="site-header" role="banner">
+
 		<div class="container">
 			<div class="site-branding">
 				<?php if ( has_custom_logo() ) : ?>
@@ -42,7 +43,7 @@
 				endif;
 
 				$description = get_bloginfo( 'description', 'display' );
-				if ( $description || is_customize_preview() ) : ?>
+				if ( $description ) : ?>
 					<p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
 				<?php
 				endif; ?>
