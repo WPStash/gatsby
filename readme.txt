@@ -1,11 +1,11 @@
 === gatsby ===
 
 Contributors: famethemes
-Tags: one-column, two-columns, left-sidebar, right-sidebar, fluid-layout, responsive-layout, custom-menu, featured-images, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, light
+Tags: one-column, two-columns, right-sidebar, grid-layout, footer-widgets, blog, news, photography, custom-menu, featured-images, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready
 
 Requires at least: 4.0
 Tested up to: 4.4.2
-Stable tag: 1.0.0
+Stable tag: 0.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,13 +23,16 @@ Gatsby is a responsive WordPress theme focused on readability with a minimalist 
 
 == Frequently Asked Questions ==
 
-== Changelog ==
-
-= 1.0 - May 12 2015 =
-* Initial release
-
 == Credits ==
 
 * Based on Underscores http://underscores.me/, (C) 2012-2016 Automattic, Inc., [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)
 * normalize.css http://necolas.github.io/normalize.css/, (C) 2012-2016 Nicolas Gallagher and Jonathan Neal, [MIT](http://opensource.org/licenses/MIT)
 * Font Awesome, SIL OFL 1.1. (http://scripts.sil.org/OFL) http://fortawesome.github.io/Font-Awesome/license/
+* Image use in screenshot: https://www.pexels.com/photo/mobile-phone-samsung-edge-samsung-galaxy-s6-edge-plus-50614/. [CC0](https://creativecommons.org/publicdomain/zero/1.0/)
+* Image use in screenshot: https://www.pexels.com/photo/keyboard-green-51415/ [CC0](https://creativecommons.org/publicdomain/zero/1.0/)
+* Image use in screenshot: https://www.pexels.com/photo/runners-sports-people-fun-29353/ [CC0](https://creativecommons.org/publicdomain/zero/1.0/)
+
+== Changelog ==
+
+= 0.0.2 =
+* Initial release

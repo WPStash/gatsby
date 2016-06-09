@@ -41,6 +41,7 @@ function gatsby_customize_register( $wp_customize ) {
 				$wp_customize->add_setting( 'gatsby_homepage_layout',
 					array(
 						'default'           => 'default',
+						'sanitize_callback'	=> 'gatsby_sanitize_select',
 					)
 				);
 
@@ -83,6 +84,7 @@ function gatsby_customize_register( $wp_customize ) {
 
 				// Primary color setting
 				$wp_customize->add_setting( 'primary_color' , array(
+					'sanitize_callback'	=> 'gatsby_sanitize_hex_color',
 				    'default'     => '#e40018',
 				) );
 
@@ -95,6 +97,7 @@ function gatsby_customize_register( $wp_customize ) {
 				// Second color setting
 				$wp_customize->add_setting( 'secondary_color' , array(
 				    'default'     => '#494949',
+					'sanitize_callback'	=> 'gatsby_sanitize_hex_color',
 				) );
 				$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'secondary_color', array(
 					'label'        => __( 'Secondary Color', 'gatsby' ),

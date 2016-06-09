@@ -62,17 +62,17 @@ function gatsby_posted_on_second() {
 	);
 
 	$posted_on = sprintf(
-		esc_html_x( ' on %s', 'post date', 'fashify' ),
+		esc_html_x( ' on %s', 'post date', 'gatsby' ),
 		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 	);
 
 	$byline = sprintf(
-		esc_html_x( 'by %s', 'post author', 'fashify' ),
+		esc_html_x( 'by %s', 'post author', 'gatsby' ),
 		'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 	);
 
-	$categories_list = get_the_category_list( esc_html__( ', ', 'fashify' ) );
-	$posted_in = sprintf( esc_html__( ' in %1$s', 'fashify' ),  $categories_list);
+	$categories_list = get_the_category_list( esc_html__( ', ', 'gatsby' ) );
+	$posted_in = sprintf( esc_html__( ' in %1$s', 'gatsby' ),  $categories_list);
 
 
 	echo '<span class="byline"> ' . $byline . '</span><span class="posted-on">' . $posted_on . '</span>'; // WPCS: XSS OK.
@@ -157,7 +157,7 @@ if ( ! function_exists( 'gatsby_comments' ) ) :
  		case 'trackback' :
  	?>
  	<li class="pingback">
- 		<p><?php _e( 'Pingback:', 'techone' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __( 'Edit', 'gatsby' ), ' ' ); ?></p>
+ 		<p><?php _e( 'Pingback:', 'gatsby' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __( 'Edit', 'gatsby' ), ' ' ); ?></p>
  	<?php
  			break;
  		default :
@@ -178,7 +178,7 @@ if ( ! function_exists( 'gatsby_comments' ) ) :
  					<a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>"><time pubdate datetime="<?php comment_time( 'c' ); ?>">
  					<?php
  						/* translators: 1: date, 2: time */
- 						printf( __( '%1$s at %2$s', 'techone' ), get_comment_date(), get_comment_time() ); ?>
+ 						printf( __( '%1$s at %2$s', 'gatsby' ), get_comment_date(), get_comment_time() ); ?>
  					</time></a>
  				</div><!-- .comment-meta .commentmetadata -->
  				<div class="comment-content"><?php comment_text(); ?></div>
