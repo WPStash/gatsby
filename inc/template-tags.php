@@ -144,7 +144,7 @@ if ( ! function_exists( 'gatsby_comments' ) ) :
  * Template for comments and pingbacks.
  *
  * To override this walker in a child theme without modifying the comments template
- * simply create your own codilight_lite_comment(), and that function will be used instead.
+ * simply create your own gatsby_comments(), and that function will be used instead.
  *
  * Used as a callback by wp_list_comments() for displaying the comments.
  *
