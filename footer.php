@@ -26,7 +26,11 @@
 
 		<div class="site-info">
 			<div class="container">
-				<?php wp_nav_menu( array( 'theme_location' => 'footer' ) ) ?>
+				<?php
+				if ( has_nav_menu( 'footer' ) ) {
+					wp_nav_menu( array( 'theme_location' => 'footer' ) ); 
+				}
+				?>
 
 				<div class="site-copyright">
 					<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'gatsby' ) ); ?>"><?php printf( esc_html__( 'Powered by %s', 'gatsby' ), 'WordPress' ); ?></a>
