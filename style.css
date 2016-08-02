@@ -1444,7 +1444,6 @@ a:hover, a:active {
 }
 
 .site-info {
-	color: #aaa;
 	padding: 25px 0;
 	margin: 0;
 	font-size: 14px;
@@ -1458,7 +1457,6 @@ a:hover, a:active {
 }
 
 .site-info .site-copyright a {
-	color: #aaa;
 	text-decoration: none;
 }
 
