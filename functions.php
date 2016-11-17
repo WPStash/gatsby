@@ -181,8 +181,8 @@ function gatsby_scripts() {
 
 	wp_enqueue_style( 'gatsby-style', get_stylesheet_uri() );
 	// Add extra styling to patus-style
-	$primary   = get_theme_mod( 'primary_color', '#e40018' );
-	$secondary = get_theme_mod( 'secondary_color', '#494949' );
+	$primary   = esc_attr( get_theme_mod( 'primary_color', '#e40018' ) );
+	$secondary = esc_attr( get_theme_mod( 'secondary_color', '#494949' ) );
 	$custom_css = "
 			a{color: #{$secondary}; }
 			.entry-meta a,
@@ -192,7 +192,9 @@ function gatsby_scripts() {
 			.main-navigation .current_page_ancestor > a,
 			.widget_tag_cloud a:hover,
 			.social-links ul a:hover::before,
-			a:hover
+			a:hover,
+			a.read-more,
+			.comments-area .logged-in-as a
 			 {
 				 color : {$primary};
 			 }
@@ -215,22 +217,17 @@ function gatsby_scripts() {
 					background: {$secondary};
 					border-color: {$secondary};
 			}";
-			//wp_add_inline_style( 'gatsby-style', $custom_css );
+			wp_add_inline_style( 'gatsby-style', $custom_css );
 
 	wp_enqueue_script( 'jquery' );
-	wp_enqueue_script( 'gatsby-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
-	wp_enqueue_script( 'gatsby-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+	wp_enqueue_script( 'gatsby-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array(), '20151215', true );
+	wp_enqueue_script( 'gatsby-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '20151215', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'gatsby_scripts' );
-
-/**
- * Implement the Custom Header feature.
- */
-require get_template_directory() . '/inc/custom-header.php';
 
 /**
  * Custom template tags for this theme.

@@ -17,7 +17,7 @@ get_header(); ?>
 		global $wp_query;
 		$total_pages = $wp_query->max_num_pages;
 		$current_page = max( 1, get_query_var('paged') );
-		$archive_layout = get_theme_mod( 'gatsby_archive_layout', 'default' );
+		$archive_layout = esc_attr( get_theme_mod( 'gatsby_archive_layout', 'default' ) );
 		if ( have_posts() ) : ?>
 
 			<header class="page-header">

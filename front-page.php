@@ -24,7 +24,7 @@ get_header(); ?>
 		global $wp_query;
 		$total_pages = $wp_query->max_num_pages;
 		$current_page = max( 1, get_query_var('paged') );
-		$homepage_layout = get_theme_mod( 'gatsby_homepage_layout', 'default' );
+		$homepage_layout = esc_attr( get_theme_mod( 'gatsby_homepage_layout', 'default' ) );
 		$count = 0;
 		if ( have_posts() ) :
 

@@ -23,7 +23,7 @@
 function gatsby_custom_header_setup() {
 	add_theme_support( 'custom-header', apply_filters( 'gatsby_custom_header_args', array(
 		'default-image'          => '',
-		'default-text-color'     => 'ffffff',
+		'default-text-color'     => '000000',
 		'width'                  => 2000,
 		'height'                 => 145,
 		'flex-height'            => false,

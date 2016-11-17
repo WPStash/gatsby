@@ -5,6 +5,59 @@
  * @package gatsby
  */
 
+ /**
+  * Sets up the WordPress core custom header and custom background features.
+  *
+  * @see gastby_header_style()
+  */
+ function gastby_custom_header_and_background() {
+
+ 	$default_background_color = 'ffffff';
+ 	$default_text_color       = '000000';
+
+ 	add_theme_support( 'custom-background', apply_filters( 'gastby_custom_background_args', array(
+ 		'default-color' => $default_background_color,
+ 	) ) );
+
+ 	add_theme_support( 'custom-header', apply_filters( 'gastby_custom_header_args', array(
+ 		'default-text-color'     => $default_text_color,
+ 		'width'                  => 1200,
+ 		'height'                 => 145,
+ 		'flex-height'            => true,
+ 		'wp-head-callback'       => 'gastby_header_style',
+ 	) ) );
+ }
+ add_action( 'after_setup_theme', 'gastby_custom_header_and_background' );
+
+
+ if ( ! function_exists( 'gastby_header_style' ) ) :
+ /**
+  * Styles the header text displayed on the site.
+  *
+  * @see gastby_custom_header_and_background().
+  */
+ function gastby_header_style() {
+ 	// If the header text option is untouched, let's bail.
+ 	if ( display_header_text() ) {
+ 		return;
+ 	}
+ 	// If the header text has been hidden.
+ 	?>
+ 	<style type="text/css" id="gastby-header-css">
+ 		.site-branding {
+ 			margin: 0 auto 0 0;
+ 		}
+ 		.site-branding .site-title,
+ 		.site-description {
+ 			clip: rect(1px, 1px, 1px, 1px);
+ 			position: absolute;
+ 		}
+ 	</style>
+ 	<?php
+ }
+ endif; // gastby_header_style
+
+
 /**
  * Add postMessage support for site title and description for the Theme Customizer.
  *
@@ -17,27 +70,10 @@ function gatsby_customize_register( $wp_customize ) {
 	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
 
 
-		/*------------------------------------------------------------------------*/
-		/*  Section: Theme Options
-		/*------------------------------------------------------------------------*/
+				/*------------------------------------------------------------------------*/
+				/*  front page layout
+				/*------------------------------------------------------------------------*/
 
-		$wp_customize->add_panel( 'gatsby_theme_options_panel' ,
-				array(
-					'priority'        => 30,
-					'title'           => esc_html__( 'Theme Options', 'gatsby' ),
-					'description'     => ''
-				)
-			);
-			// section
-			$wp_customize->add_section( 'gatsby_general' ,
-				array(
-					'priority'    => 3,
-					'title'       => esc_html__( 'General', 'gatsby' ),
-					'description' => '',
-					'panel'       => 'gatsby_theme_options_panel',
-				)
-			);
-				// settings
 				$wp_customize->add_setting( 'gatsby_homepage_layout',
 					array(
 						'default'           => 'default',
@@ -47,9 +83,9 @@ function gatsby_customize_register( $wp_customize ) {
 
 				$wp_customize->add_control( 'gatsby_homepage_layout',
 					array(
-						'label' 		=> esc_html__( 'Homepage Layout', 'gatsby' ),
-						'type'			=> 'select',
-						'section' 	=> 'gatsby_general',
+						'label' 		=> esc_html__( 'Front page layout', 'gatsby' ),
+						'type'			=> 'radio',
+						'section' 	=> 'static_front_page',
 						'choices'   => array(
 							'default' => esc_html__( 'Default', 'gatsby' ),
 							'home1'   => esc_html__( 'Homepage 1', 'gatsby' ),
@@ -62,24 +98,25 @@ function gatsby_customize_register( $wp_customize ) {
 				);
 
 				// archive/search post layout
-				$wp_customize->add_setting( 'gatsby_archive_layout',
-					array(
-						'sanitize_callback'	=> 'gatsby_sanitize_select',
-						'default'           => 'default',
-					)
-				);
-				$wp_customize->add_control( 'gatsby_archive_layout',
-					array(
-						'label' 		=> esc_html__( 'Archive/Search layout:', 'gatsby' ),
-						'type'			=> 'select',
-						'section' 		=> 'staff_picks',
-						'choices'   	=> array (
-							'default'	=> esc_html__( 'Default', 'gatsby' ),
-							'grid'	    => esc_html__( 'Grid', 'gatsby' ),
-							'list'		=> esc_html__( 'List', 'gatsby' ),
-						)
-					)
-				);
+				// $wp_customize->add_setting( 'gatsby_archive_layout',
+				// 	array(
+				// 		'sanitize_callback'	=> 'gatsby_sanitize_select',
+				// 		'default'           => 'default',
+				// 	)
+				// );
+				// $wp_customize->add_control( 'gatsby_archive_layout',
+				// 	array(
+				// 		'label' 		=> esc_html__( 'Archive/Search layout:', 'gatsby' ),
+				// 		'type'			=> 'radio',
+				// 		'section' 		=> 'static_front_page',
+				// 		'choices'   	=> array (
+				// 			'default'	=> esc_html__( 'Default', 'gatsby' ),
+				// 			'grid'	    => esc_html__( 'Grid', 'gatsby' ),
+				// 			'list'		=> esc_html__( 'List', 'gatsby' ),
+				// 		)
+				// 	)
+				// );
+
 
 
 				// Primary color setting

@@ -1179,13 +1179,15 @@ a:hover, a:active {
 .site-header .site-title a {
 	text-decoration: none;
 	font-weight: bold;
+	color: #1a1a1a;
 }
 
-.site-header p {
+.site-header .site-description {
 	margin-bottom: 0;
 	margin-top: 2px;
 	font-size: 13px;
 	font-style: italic;
+	color: #686868;
 }
 
 .site-branding {

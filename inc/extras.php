@@ -25,7 +25,7 @@ function gatsby_body_classes( $classes ) {
 	}
 
 	if ( is_front_page() || is_home() ) {
-		$homepage_layout = get_theme_mod( 'gatsby_homepage_layout', 'default' );
+		$homepage_layout = esc_attr( get_theme_mod( 'gatsby_homepage_layout', 'default' ) );
 		$classes[] = 'homepage-'.$homepage_layout;
 	}
 
