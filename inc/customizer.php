@@ -22,7 +22,7 @@
  	add_theme_support( 'custom-header', apply_filters( 'gastby_custom_header_args', array(
  		'default-text-color'     => $default_text_color,
  		'width'                  => 1200,
- 		'height'                 => 145,
+ 		'height'                 => 220,
  		'flex-height'            => true,
  		'wp-head-callback'       => 'gastby_header_style',
  	) ) );
@@ -96,27 +96,6 @@ function gatsby_customize_register( $wp_customize ) {
 						)
 					)
 				);
-
-				// archive/search post layout
-				// $wp_customize->add_setting( 'gatsby_archive_layout',
-				// 	array(
-				// 		'sanitize_callback'	=> 'gatsby_sanitize_select',
-				// 		'default'           => 'default',
-				// 	)
-				// );
-				// $wp_customize->add_control( 'gatsby_archive_layout',
-				// 	array(
-				// 		'label' 		=> esc_html__( 'Archive/Search layout:', 'gatsby' ),
-				// 		'type'			=> 'radio',
-				// 		'section' 		=> 'static_front_page',
-				// 		'choices'   	=> array (
-				// 			'default'	=> esc_html__( 'Default', 'gatsby' ),
-				// 			'grid'	    => esc_html__( 'Grid', 'gatsby' ),
-				// 			'list'		=> esc_html__( 'List', 'gatsby' ),
-				// 		)
-				// 	)
-				// );
-
 
 
 				// Primary color setting

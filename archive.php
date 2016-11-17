@@ -17,7 +17,7 @@ get_header(); ?>
 		global $wp_query;
 		$total_pages = $wp_query->max_num_pages;
 		$current_page = max( 1, get_query_var('paged') );
-		$archive_layout = esc_attr( get_theme_mod( 'gatsby_archive_layout', 'default' ) );
+
 		if ( have_posts() ) : ?>
 
 			<header class="page-header">
@@ -36,20 +36,8 @@ get_header(); ?>
 				 * If you want to override this in a child theme, then include a file
 				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
 				 */
-				 switch ( $archive_layout ) {
- 		 			case 'grid':
- 		 				get_template_part( 'template-parts/content', 'grid' );
- 		 				break;
-
- 		 			case 'list':
- 		 				get_template_part( 'template-parts/content', 'list' );
- 		 				break;
-
- 		 			default:
- 		 				get_template_part( 'template-parts/content', 'grid-large' );
- 		 				break;
- 		 		}
-
+				
+				get_template_part( 'template-parts/content', 'grid' );
 
 			endwhile;
 

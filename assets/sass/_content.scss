@@ -59,6 +59,9 @@ h1.entry-title{
 .featured-image{
 	position: relative;
 	margin-bottom: 20px;
+	img {
+		width: 100%;
+	}
 }
 
 .entry-info {

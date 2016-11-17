@@ -15,7 +15,6 @@
 	}
 	a {
 		text-decoration: none;
-		line-height: 1.75;
 		&:hover {
 			text-decoration: underline;
 		}
@@ -28,7 +27,7 @@
 
 .widget-title {
 	padding-bottom: 15px;
-    margin-bottom: 20px;
+    margin-bottom: 7px;
 	margin-top: 0;
     border-bottom: 2px solid #f5f5f5;
     position: relative;
@@ -42,9 +41,9 @@
 .widget_nav_menu ul li,
 .widget_rss ul li {
 	display: block;
-	padding-bottom: 12px;
-	margin-bottom: 12px;
-	border-bottom: 1px solid #eee;
+	padding-bottom: 7px;
+	margin-bottom: 7px;
+	border-bottom: 1px solid #e9e9e9;
 	position: relative;
 	&::before{
 		color: #ccc;
@@ -76,4 +75,199 @@
 		}
 	}
 
+}
+
+.gastby-posts-widget .widget-posts li {
+	padding: 10px 0px 13px;
+	&:last-child {
+		padding-top: 0;
+	}
+	&.has-thumb {
+		.p-info {
+			margin-left: 75px;
+		}
+	}
+	img {
+		width: 65px;
+		height: auto;
+		float: left;
+		margin-right: 10px;
+	}
+	.p-info {
+		position: relative;
+		top: -2px;
+	}
+	.entry-title {
+		font-size: 15px;
+		font-size: 0.9375rem;
+		line-height: 1.4;
+		text-transform: none;
+		color: #222222;
+		margin-bottom: 0px;
+		margin-top: 0;
+		display: inline-block;
+	}
+	.entry-date {
+		display: block;
+		font-size: 12px;
+		font-style: italic;
+		color: #777777;
+		margin-top: 2px;
+	}
+}
+/*--------------------------------------------------------------
+## Social Menu
+--------------------------------------------------------------*/
+.social-links {
+  margin: 0 auto;
+  padding: 0;
+  ul {
+	  margin: 0;
+	  padding: 0;
+	  li {
+		  list-style: none;
+		  display: inline-block;
+		  margin-right: 30px;
+		  &:last-child {
+			  margin-right: 0;
+		  }
+		  @include media-breakpoint-down(sm) {
+			  margin-bottom: 10px;
+		  }
+	  }
+	  a {
+		  background: transparent;
+		  display: inline-block;
+		  text-decoration: none;
+		  &::before {
+			  font-family: "FontAwesome";
+			  font-size: 24px;
+			  font-style: normal;
+			  font-weight: normal;
+			  line-height: 1;
+			  text-decoration: none;
+			  vertical-align: text-bottom;
+			  -webkit-font-smoothing: antialiased;
+		  }
+		  &:hover {
+			  background: transparent;
+			  color: $color__primary;
+			  text-decoration: none;
+			  &::before {
+				  color: $color__primary;
+				  -webkit-transition: 0.2s all ease-in-out;
+				  transition: 0.2s all ease-in-out;
+			  }
+		  }
+	  }
+  }
+}
+
+.social-links ul a[href*='wordpress.org']:before,
+.social-links ul a[href*='wordpress.com']:before {
+  content: "\f19a";
+}
+
+.social-links ul a[href*='facebook.com']:before {
+  content: "\f09a";
+}
+
+.social-links ul a[href*='twitter.com']:before {
+  content: "\f099";
+}
+
+.social-links ul a[href*='dribbble.com']:before {
+  content: "\f17d";
+}
+
+.social-links ul a[href*='plus.google.com']:before {
+  content: "\f0d5";
+}
+
+.social-links ul a[href*='pinterest.com']:before {
+  content: "\f0d2";
+}
+
+.social-links ul a[href*='github.com']:before {
+  content: '\f09b';
+}
+
+.social-links ul a[href*='tumblr.com']:before {
+  content: '\f173';
+}
+
+.social-links ul a[href*='youtube.com']:before {
+  content: '\f167';
+}
+
+.social-links ul a[href*='flickr.com']:before {
+  content: '\f16e';
+}
+
+.social-links ul a[href*='vimeo.com']:before {
+  content: '\f27d';
+}
+
+.social-links ul a[href*='instagram.com']:before {
+  content: '\f16d';
+}
+
+.social-links ul a[href*='codepen.io']:before {
+  content: '\f1cb';
+}
+
+.social-links ul a[href*='linkedin.com']:before {
+  content: '\f0e1';
+}
+
+.social-links ul a[href*='foursquare.com']:before {
+  content: '\f180';
+}
+
+.social-links ul a[href*='reddit.com']:before {
+  content: '\f1a1';
+}
+
+.social-links ul a[href*='digg.com']:before {
+  content: '\f1a6';
+}
+
+.social-links ul a[href*='getpocket.com']:before {
+  content: '\f224';
+}
+
+.social-links ul a[href*='path.com']:before {
+  content: '\f20c';
+}
+
+.social-links ul a[href*='stumbleupon.com']:before {
+  content: '\f1a4';
+}
+
+.social-links ul a[href*='spotify.com']:before {
+  content: '\f1bc';
+}
+
+.social-links ul a[href*='twitch.tv']:before {
+  content: '\f1e8';
+}
+
+.social-links ul a[href*='dropbox.com']:before {
+  content: '\f16b';
+}
+
+.social-links ul a[href*='/feed']:before {
+  content: '\f09e';
+}
+
+.social-links ul a[href*='skype']:before {
+  content: '\f17e';
+}
+
+.social-links ul a[href*='mailto']:before {
+  content: '\f0e0';
+}
+
+.social-links ul a:before {
+  content: '\f415';
 }

@@ -223,3 +223,23 @@ function gatsby_the_custom_logo() {
 	}
 }
 endif;
+
+
+/**
+ * Output the theme info to 'gatsby_theme_info' hook.
+ */
+if ( ! function_exists( 'gastby_footer_credit' ) ) {
+    /**
+     * Add Copyright and Credit text to footer
+     * @since 1.1.3
+     */
+    function gastby_footer_credit()
+    {
+        ?>
+		<span class="theme-info-text">
+        <?php printf( esc_html__( 'Gastby Theme by %1$s', 'gastby' ), '<a href="https://wpstash.com/" rel="designer">WPStash</a>' ); ?>
+		</span>
+        <?php
+    }
+}
+add_action( 'gatsby_theme_info', 'gastby_footer_credit' );

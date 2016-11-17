@@ -14,29 +14,28 @@
 	</div><!-- #content -->
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
+
+		<?php if ( is_active_sidebar( 'footer' ) ) { ?>
 		<div class="footer-widgets">
 			<div class="container">
 				<?php
-					if ( is_active_sidebar( 'footer' ) ) {
 						dynamic_sidebar( 'footer' );
-					}
 				?>
 			</div>
 		</div>
+		<?php } ?>
 
 		<div class="site-info">
 			<div class="container">
-				<?php
-				if ( has_nav_menu( 'footer' ) ) {
-					wp_nav_menu( array( 'theme_location' => 'footer' ) );
-				}
-				?>
 
 				<div class="site-copyright">
-					<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'gatsby' ) ); ?>"><?php printf( esc_html__( 'Powered by %s', 'gatsby' ), 'WordPress' ); ?></a>
-					<span class="sep"> . </span>
-					<?php printf( esc_html__( 'Theme designed by %2$s.', 'gatsby' ), 'gatsby', '<a href="https://wpstash.com" rel="designer">WPStash</a>' ); ?>
+					<?php printf( esc_html__( 'Copyright &copy; %1$s %2$s. All Rights Reserved.', 'gastby' ), date('Y'), get_bloginfo( 'name' ) ); ?>
 				</div>
+
+				<div class="theme-info">
+						<?php do_action('gatsby_theme_info'); ?>
+				</div>
+
 			</div>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->

@@ -59,7 +59,6 @@ function gatsby_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
 		'primary' => esc_html__( 'Primary', 'gatsby' ),
-		'footer'  => esc_html__( 'Footer', 'gatsby' ),
 	) );
 
 	/*
@@ -243,3 +242,8 @@ require get_template_directory() . '/inc/extras.php';
  * Customizer additions.
  */
 require get_template_directory() . '/inc/customizer.php';
+
+/**
+ * Widget posts
+ */
+require get_template_directory() . '/inc/posts-widget.php';
