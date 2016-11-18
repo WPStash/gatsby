@@ -1148,10 +1148,7 @@ a:hover, a:active {
 
 .gastby-posts-widget .widget-posts li {
 	padding: 10px 0px 13px;
-}
-
-.gastby-posts-widget .widget-posts li:last-child {
-	padding-top: 0;
+	clear: both;
 }
 
 .gastby-posts-widget .widget-posts li.has-thumb .p-info {
@@ -1448,6 +1445,8 @@ a:hover, a:active {
 @media (max-width: 991px) {
 	.content-area {
 		width: 100%;
+		padding-right: 0;
+		border-right: 0;
 	}
 }
 
@@ -1463,6 +1462,8 @@ a:hover, a:active {
 	.sidebar {
 		width: 100%;
 		margin-top: 40px;
+		padding-left: 0;
+		border-left: 0;
 	}
 }
 
@@ -1684,6 +1685,14 @@ a:hover, a:active {
 
 .site-info .theme-info {
 	float: right;
+}
+
+@media (max-width: 767px) {
+	.site-info .theme-info {
+		float: none;
+		clear: both;
+		text-align: center;
+	}
 }
 
 /*--------------------------------------------------------------

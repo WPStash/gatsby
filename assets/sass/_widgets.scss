@@ -79,9 +79,7 @@
 
 .gastby-posts-widget .widget-posts li {
 	padding: 10px 0px 13px;
-	&:last-child {
-		padding-top: 0;
-	}
+	clear: both;
 	&.has-thumb {
 		.p-info {
 			margin-left: 75px;

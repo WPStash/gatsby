@@ -72,6 +72,8 @@
     padding-right: 39px;
     @include media-breakpoint-down(md){
         width: 100%;
+        padding-right: 0;
+        border-right: 0;
     }
 }
 .sidebar {
@@ -83,6 +85,8 @@
     @include media-breakpoint-down(md){
         width: 100%;
         margin-top: 40px;
+        padding-left: 0;
+        border-left: 0;
     }
 }
 
@@ -277,5 +281,10 @@
     }
     .theme-info {
         float: right;
+        @include media-breakpoint-down(sm) {
+            float: none;
+            clear: both;
+            text-align: center;
+        }
     }
 }
