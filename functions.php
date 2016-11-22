@@ -43,6 +43,7 @@ function gatsby_setup() {
 		'height'      => 49,
 		'width'       => 162,
 		'flex-height' => true,
+        'flex-width'  => true,
 	) );
 
 
@@ -192,8 +193,7 @@ function gatsby_scripts() {
 			.widget_tag_cloud a:hover,
 			.social-links ul a:hover::before,
 			a:hover,
-			a.read-more,
-			.comments-area .logged-in-as a
+			a.read-more
 			 {
 				 color : {$primary};
 			 }

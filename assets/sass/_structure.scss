@@ -13,11 +13,12 @@
 }
 
 .site-header {
-    padding: 45px 0;
+    padding: 25px 0;
     .site-title {
         font-size: 35px;
         text-decoration: none;
         margin: 5px 0;
+        line-height: 40px;
         a {
             text-decoration: none;
             font-weight: bold;
@@ -27,7 +28,6 @@
     .site-description {
         margin-bottom: 0;
         margin-top: 2px;
-        font-size: 13px;
         font-style: italic;
         color: #686868;
     }
@@ -39,6 +39,9 @@
     @include media-breakpoint-down(md) {
         float: none;
         text-align: center;
+    }
+    .site-logo img {
+        display: block;
     }
 }
 
@@ -67,7 +70,7 @@
 
 .content-area {
     float: left;
-    width: 74.77477%;
+    width: 72.77477%;
     border-right: 1px solid #e9e9e9;
     padding-right: 39px;
     @include media-breakpoint-down(md){
@@ -78,7 +81,7 @@
 }
 .sidebar {
     float: left;
-    width: 25.22523%;
+    width: 27.22523%;
     padding-left: 39px;
     border-left: 1px solid #e9e9e9;
     margin-left: -1px;
@@ -129,7 +132,7 @@
 		}
 	}
 	.entry-meta {
-		margin-bottom: 5px;
+		margin-bottom: 10px;
 	}
 	.entry-title {
 		font-size: 24px;
@@ -265,7 +268,7 @@
 .site-info {
     padding: 25px 0;
     margin: 0;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.75;
     border-top: 1px solid #e9e9e9;
     .site-copyright {

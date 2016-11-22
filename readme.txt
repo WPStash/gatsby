@@ -34,5 +34,5 @@ Gatsby is a responsive WordPress theme focused on readability with a minimalist 
 
 == Changelog ==
 
-= 0.0.2 =
+= 0.0.3 =
 * Initial release

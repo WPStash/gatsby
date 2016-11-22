@@ -84,7 +84,7 @@ h2.entry-title {
     font-size: 24px;
     line-height: 1.2;
     font-weight: 700;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 	margin-top: 0;
 	@include media-breakpoint-down(md) {
 		font-size: 22px;
@@ -165,8 +165,6 @@ a.read-more {
 .comments-area {
 	margin-top: 40px;
 	.logged-in-as a {
-		color: $color__primary;
-		font-weight: bold;
 	}
 	.comment-list  {
 		list-style: none;
@@ -241,10 +239,7 @@ a.read-more {
 		font-weight: bold;
 	}
 	h3#reply-title {
-		border-bottom: 1px solid #e5e5e5;
 		font-size: 22px;
-		margin-bottom: 40px;
-		padding-bottom: 10px;
-		text-transform: uppercase;
+		margin-bottom: 20px;
 	}
 }
