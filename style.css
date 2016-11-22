@@ -1147,28 +1147,28 @@ a:hover, a:active {
 	text-decoration: none;
 }
 
-.gastby-posts-widget .widget-posts li {
+.gatsby-posts-widget .widget-posts li {
 	padding: 10px 0px 13px;
 	clear: both;
 }
 
-.gastby-posts-widget .widget-posts li.has-thumb .p-info {
+.gatsby-posts-widget .widget-posts li.has-thumb .p-info {
 	margin-left: 80px;
 }
 
-.gastby-posts-widget .widget-posts li img {
+.gatsby-posts-widget .widget-posts li img {
 	width: 65px;
 	height: auto;
 	float: left;
 	margin-right: 10px;
 }
 
-.gastby-posts-widget .widget-posts li .p-info {
+.gatsby-posts-widget .widget-posts li .p-info {
 	position: relative;
 	top: -2px;
 }
 
-.gastby-posts-widget .widget-posts li .entry-title {
+.gatsby-posts-widget .widget-posts li .entry-title {
 	font-size: 15px;
 	font-size: 17px;
 	line-height: 1.4;
@@ -1180,7 +1180,7 @@ a:hover, a:active {
 	font-weight: 500;
 }
 
-.gastby-posts-widget .widget-posts li .entry-date {
+.gatsby-posts-widget .widget-posts li .entry-date {
 	display: block;
 	font-size: 13px;
 	font-style: italic;

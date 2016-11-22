@@ -29,7 +29,7 @@
 			<div class="container">
 
 				<div class="site-copyright">
-					<?php printf( esc_html__( 'Copyright &copy; %1$s %2$s. All Rights Reserved.', 'gastby' ), date('Y'), get_bloginfo( 'name' ) ); ?>
+					<?php printf( esc_html__( 'Copyright &copy; %1$s %2$s. All Rights Reserved.', 'gatsby' ), date('Y'), get_bloginfo( 'name' ) ); ?>
 				</div>
 
 				<div class="theme-info">

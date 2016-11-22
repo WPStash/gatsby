@@ -8,42 +8,42 @@
  /**
   * Sets up the WordPress core custom header and custom background features.
   *
-  * @see gastby_header_style()
+  * @see gatsby_header_style()
   */
- function gastby_custom_header_and_background() {
+ function gatsby_custom_header_and_background() {
 
  	$default_background_color = 'ffffff';
  	$default_text_color       = '000000';
 
- 	add_theme_support( 'custom-background', apply_filters( 'gastby_custom_background_args', array(
+ 	add_theme_support( 'custom-background', apply_filters( 'gatsby_custom_background_args', array(
  		'default-color' => $default_background_color,
  	) ) );
 
- 	add_theme_support( 'custom-header', apply_filters( 'gastby_custom_header_args', array(
+ 	add_theme_support( 'custom-header', apply_filters( 'gatsby_custom_header_args', array(
  		'default-text-color'     => $default_text_color,
  		'width'                  => 1200,
  		'height'                 => 220,
  		'flex-height'            => true,
- 		'wp-head-callback'       => 'gastby_header_style',
+ 		'wp-head-callback'       => 'gatsby_header_style',
  	) ) );
  }
- add_action( 'after_setup_theme', 'gastby_custom_header_and_background' );
+ add_action( 'after_setup_theme', 'gatsby_custom_header_and_background' );
 
 
- if ( ! function_exists( 'gastby_header_style' ) ) :
+ if ( ! function_exists( 'gatsby_header_style' ) ) :
  /**
   * Styles the header text displayed on the site.
   *
-  * @see gastby_custom_header_and_background().
+  * @see gatsby_custom_header_and_background().
   */
- function gastby_header_style() {
+ function gatsby_header_style() {
  	// If the header text option is untouched, let's bail.
  	if ( display_header_text() ) {
  		return;
  	}
  	// If the header text has been hidden.
  	?>
- 	<style type="text/css" id="gastby-header-css">
+ 	<style type="text/css" id="gatsby-header-css">
  		.site-branding {
  			margin: 0 auto 0 0;
  		}
@@ -55,7 +55,7 @@
  	</style>
  	<?php
  }
- endif; // gastby_header_style
+ endif; // gatsby_header_style
 
 
 /**

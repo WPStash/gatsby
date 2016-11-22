@@ -1,16 +1,16 @@
 <?php
-function gastby_posts_widget() {
-    register_widget( 'Gastby_Posts_Widget' );
+function gatsby_posts_widget() {
+    register_widget( 'gatsby_Posts_Widget' );
 }
-add_action( 'widgets_init', 'gastby_posts_widget' );
-class Gastby_Posts_Widget extends WP_Widget {
+add_action( 'widgets_init', 'gatsby_posts_widget' );
+class gatsby_Posts_Widget extends WP_Widget {
     function __construct() {
         parent::__construct(
-            'gastby-posts',
-            esc_html__( 'Gastby Custom Posts', 'gastby' ),
+            'gatsby-posts',
+            esc_html__( 'gatsby Custom Posts', 'gatsby' ),
             array(
-                'classname' => 'gastby-posts-widget',
-                'description' => esc_html__( 'Displays custom posts.', 'gastby' ),
+                'classname' => 'gatsby-posts-widget',
+                'description' => esc_html__( 'Displays custom posts.', 'gatsby' ),
                 'customize_selective_refresh' => true
             )
         );
@@ -21,7 +21,7 @@ class Gastby_Posts_Widget extends WP_Widget {
             'orderby' => 'date',
             'order' => 'desc',
         ) );
-        $title =  isset( $instance['title'] ) ? $instance['title'] : esc_html__( 'Recent Posts', 'gastby' );
+        $title =  isset( $instance['title'] ) ? $instance['title'] : esc_html__( 'Recent Posts', 'gatsby' );
 
         $post_args = array(
             'posts_per_page' => absint( $instance['number'] ),
@@ -58,7 +58,7 @@ class Gastby_Posts_Widget extends WP_Widget {
                     <h2 class="entry-title"><a title="<?php the_title_attribute(); ?>" href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title( ); ?></a></h2>
                     <?php
                     printf(
-                        esc_html_x( '%s', 'post date', 'gastby' ),
+                        esc_html_x( '%s', 'post date', 'gatsby' ),
                         '<span class="entry-date">' . $time_string . '</span>'
                     );
                     ?>
@@ -73,7 +73,7 @@ class Gastby_Posts_Widget extends WP_Widget {
     }
     function form( $instance ) {
         $instance = wp_parse_args( (array) $instance, array(
-            'title' => esc_html__( 'Recent Posts', 'gastby' ),
+            'title' => esc_html__( 'Recent Posts', 'gatsby' ),
             'number' => 4,
             'orderby' => 'date',
             'order' => 'desc'
@@ -84,28 +84,28 @@ class Gastby_Posts_Widget extends WP_Widget {
         $order = $instance['order'];
         ?>
         <p>
-            <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title', 'gastby' ); ?>:
+            <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title', 'gatsby' ); ?>:
                 <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
             </label>
         </p>
         <p>
-            <label for="<?php echo esc_attr( $this->get_field_id( 'number' ) ); ?>"><?php esc_html_e( 'Number of photos', 'gastby' ); ?>:
+            <label for="<?php echo esc_attr( $this->get_field_id( 'number' ) ); ?>"><?php esc_html_e( 'Number of photos', 'gatsby' ); ?>:
                 <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'number' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'number' ) ); ?>" type="text" value="<?php echo esc_attr( $number ); ?>" />
             </label>
         </p>
         <p>
-            <label for="<?php echo esc_attr( $this->get_field_id( 'orderby' ) ); ?>"><?php esc_html_e( 'Order by', 'gastby' ); ?>:</label>
+            <label for="<?php echo esc_attr( $this->get_field_id( 'orderby' ) ); ?>"><?php esc_html_e( 'Order by', 'gatsby' ); ?>:</label>
             <select id="<?php echo esc_attr( $this->get_field_id( 'orderby' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'orderby' ) ); ?>" class="widefat">
-                <option value="date" <?php selected( 'date', $orderby ) ?>><?php esc_html_e( 'Date', 'gastby' ); ?></option>
-                <option value="title" <?php selected( 'title', $orderby ) ?>><?php esc_html_e( 'Title', 'gastby' ); ?></option>
-                <option value="comment_count" <?php selected( 'Comment count', $orderby ) ?>><?php esc_html_e( 'Comment count', 'gastby' ); ?></option>
-                <option value="rand" <?php selected( 'rand', $orderby ) ?>><?php esc_html_e( 'Random', 'gastby' ); ?></option>
+                <option value="date" <?php selected( 'date', $orderby ) ?>><?php esc_html_e( 'Date', 'gatsby' ); ?></option>
+                <option value="title" <?php selected( 'title', $orderby ) ?>><?php esc_html_e( 'Title', 'gatsby' ); ?></option>
+                <option value="comment_count" <?php selected( 'Comment count', $orderby ) ?>><?php esc_html_e( 'Comment count', 'gatsby' ); ?></option>
+                <option value="rand" <?php selected( 'rand', $orderby ) ?>><?php esc_html_e( 'Random', 'gatsby' ); ?></option>
             </select>
         </p>
-        <p><label for="<?php echo esc_attr( $this->get_field_id( 'order' ) ); ?>"><?php esc_html_e( 'Order', 'gastby' ); ?>:</label>
+        <p><label for="<?php echo esc_attr( $this->get_field_id( 'order' ) ); ?>"><?php esc_html_e( 'Order', 'gatsby' ); ?>:</label>
             <select id="<?php echo esc_attr( $this->get_field_id( 'order' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'order' ) ); ?>" class="widefat">
-                <option value="DESC" <?php selected( 'DESC', $order ) ?>><?php esc_html_e( 'DESC', 'gastby' ); ?></option>
-                <option value="ASC" <?php selected( 'ASC', $order ) ?>><?php esc_html_e( 'ASC', 'gastby' ); ?></option>
+                <option value="DESC" <?php selected( 'DESC', $order ) ?>><?php esc_html_e( 'DESC', 'gatsby' ); ?></option>
+                <option value="ASC" <?php selected( 'ASC', $order ) ?>><?php esc_html_e( 'ASC', 'gatsby' ); ?></option>
             </select>
         </p>
 
