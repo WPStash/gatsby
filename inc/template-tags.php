@@ -231,13 +231,12 @@ endif;
 if ( ! function_exists( 'gatsby_footer_credit' ) ) {
     /**
      * Add Copyright and Credit text to footer
-     * @since 1.1.3
      */
     function gatsby_footer_credit()
     {
         ?>
 		<span class="theme-info-text">
-        <?php printf( esc_html__( 'gatsby Theme by %1$s', 'gatsby' ), '<a href="https://wpstash.com/" rel="designer">WPStash</a>' ); ?>
+        <?php printf( esc_html__( 'Gatsby Theme by %1$s', 'gatsby' ), '<a href="https://wpstash.com/" rel="designer">WPStash</a>' ); ?>
 		</span>
         <?php
     }
