@@ -13,19 +13,13 @@
  function gatsby_custom_header_and_background() {
 
  	$default_background_color = 'ffffff';
- 	$default_text_color       = '000000';
+ 	
 
  	add_theme_support( 'custom-background', apply_filters( 'gatsby_custom_background_args', array(
  		'default-color' => $default_background_color,
  	) ) );
 
- 	add_theme_support( 'custom-header', apply_filters( 'gatsby_custom_header_args', array(
- 		'default-text-color'     => $default_text_color,
- 		'width'                  => 1200,
- 		'height'                 => 220,
- 		'flex-height'            => true,
- 		'wp-head-callback'       => 'gatsby_header_style',
- 	) ) );
+
  }
  add_action( 'after_setup_theme', 'gatsby_custom_header_and_background' );
 
@@ -52,6 +46,7 @@
  			clip: rect(1px, 1px, 1px, 1px);
  			position: absolute;
  		}
+
  	</style>
  	<?php
  }
