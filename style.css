@@ -1,6 +1,5 @@
 /*
 Theme Name: Gatsby
-Theme URI:
 Author: WPStash
 Author URI: https://wpstash.com
 Description: Gatsby is a responsive WordPress theme focused on readability with a minimalist design. This theme is as minimal as it can get while keeping stunning design elements, functionality and usability.
@@ -1411,6 +1410,12 @@ a:hover, a:active {
 
 .site-branding .site-logo img {
 	display: block;
+}
+
+@media (max-width: 991px) {
+	.site-branding .site-logo img {
+		margin: 0 auto;
+	}
 }
 
 .social-menu {

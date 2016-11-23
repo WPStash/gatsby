@@ -42,6 +42,9 @@
     }
     .site-logo img {
         display: block;
+        @include media-breakpoint-down(md) {
+            margin: 0 auto;
+        }
     }
 }
 
