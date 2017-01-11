@@ -44,6 +44,7 @@ function gatsby_setup() {
 		'width'       => 162,
 		'flex-height' => true,
         'flex-width'  => true,
+		'header-text' => array( 'site-title', 'site-description' ),
 	) );
 
 

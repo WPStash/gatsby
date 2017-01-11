@@ -3,11 +3,11 @@ function gatsby_posts_widget() {
     register_widget( 'gatsby_Posts_Widget' );
 }
 add_action( 'widgets_init', 'gatsby_posts_widget' );
-class gatsby_Posts_Widget extends WP_Widget {
+class Gatsby_Posts_Widget extends WP_Widget {
     function __construct() {
         parent::__construct(
             'gatsby-posts',
-            esc_html__( 'gatsby Custom Posts', 'gatsby' ),
+            esc_html__( 'Gatsby Custom Posts', 'gatsby' ),
             array(
                 'classname' => 'gatsby-posts-widget',
                 'description' => esc_html__( 'Displays custom posts.', 'gatsby' ),
