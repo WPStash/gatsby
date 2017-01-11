@@ -68,6 +68,8 @@
 .full-width {
     .content-area {
         width: 100%;
+        padding-right: 0;
+        border: none;
     }
 }
 
@@ -230,14 +232,17 @@
 .search-form {
     position: relative;
     input {
-        height: 52px;
+        padding: 0.7em;
+        font-weight: 300;
     }
     .search-submit {
         position: absolute;
-        top: 0;
-        right: 0;
+        top: 3px;
+        right: 3px;
+        padding: 0.5em 1em;
         width: auto;
-        border-radius: 0 3px 3px 0;
+        border-radius: 3px;
+        color: #fff;
     }
 }
 
@@ -253,9 +258,12 @@
     .widget {
         box-sizing: border-box;
         float: left;
-        width: 25%;
+        width: 30%;
         margin-bottom: 20px;
-        padding: 0 20px;
+        margin-right: 5%;
+        &:last-child {
+            margin-right: 0;
+        }
         li {
             border: none;
             margin-bottom: 7px;
@@ -264,6 +272,12 @@
         @include media-breakpoint-down(sm) {
             width: 100%;
             padding: 0;
+        }
+        .widget-title {
+            text-transform: uppercase;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 16px;
+            letter-spacing: 1.5px;
         }
     }
 }
