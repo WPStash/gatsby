@@ -34,5 +34,10 @@ Gatsby is a responsive WordPress theme focused on readability with a minimalist 
 
 == Changelog ==
 
+= 0.0.6 =
+* Update Footer Author Name & Link
+* Support Gutenberg
+* Support Jetpack Infinite Scroll
+
 = 0.0.4 =
 * Initial release

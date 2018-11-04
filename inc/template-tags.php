@@ -236,7 +236,7 @@ if ( ! function_exists( 'gatsby_footer_credit' ) ) {
     {
         ?>
 		<span class="theme-info-text">
-        <?php printf( esc_html__( 'Gatsby Theme by %1$s', 'gatsby' ), '<a href="https://wpstash.com/" rel="designer">WPStash</a>' ); ?>
+        <?php printf( esc_html__( 'Gatsby Theme by %1$s', 'gatsby' ), '<a href="https://freeresponsivethemes.com/" rel="nofollow">FRT</a>' ); ?>
 		</span>
         <?php
     }

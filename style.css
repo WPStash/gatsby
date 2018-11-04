@@ -1,8 +1,10 @@
 /*
 Theme Name: Gatsby
-Author: WPStash
+Theme URI: https://freeresponsivethemes.com/gatsby/
+Author: FameThemes
+Author URI: https://www.famethemes.com/
 Description: Gatsby is a responsive WordPress theme focused on readability with a minimalist design. This theme is as minimal as it can get while keeping stunning design elements, functionality and usability.
-Version: 0.0.5
+Version: 0.0.6
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: gatsby
@@ -1987,7 +1989,8 @@ a.read-more:hover {
 # Infinite scroll
 --------------------------------------------------------------*/
 /* Globally hidden elements when Infinite Scroll is supported and in use. */
-.infinite-scroll .posts-navigation,
+
+.infinite-scroll .navigation,
 .infinite-scroll.neverending .site-footer {
 	/* Theme Footer (when set to scrolling) */
 	display: none;
@@ -1996,6 +1999,21 @@ a.read-more:hover {
 /* When Infinite Scroll has reached its end we need to re-display elements that were hidden (via .neverending) before. */
 .infinity-end.neverending .site-footer {
 	display: block;
+}
+
+#infinite-handle span {
+	background: none;
+	color: #888;
+	padding: 0;
+	font-size: 22px;
+}
+#infinite-handle span button {
+	text-transform: none;
+	font-size: 22px;
+}
+#infinite-handle span button:hover {
+	color: #000;
+	text-decoration: underline;
 }
 
 /*--------------------------------------------------------------

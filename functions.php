@@ -80,6 +80,15 @@ function gatsby_setup() {
 		'default-color' => 'ffffff',
 		'default-image' => '',
 	) ) );
+
+	/*
+	 * Add support for Gutenberg.
+	 *
+	 * @link https://wordpress.org/gutenberg/handbook/reference/theme-support/
+	 */
+	add_theme_support( 'align-wide' );
+
+
 }
 endif;
 add_action( 'after_setup_theme', 'gatsby_setup' );
@@ -248,3 +257,10 @@ require get_template_directory() . '/inc/customizer.php';
  * Widget posts
  */
 require get_template_directory() . '/inc/posts-widget.php';
+
+/**
+ * Load Jetpack compatibility file.
+ */
+if ( defined( 'JETPACK__VERSION' ) ) {
+	require get_template_directory() . '/inc/jetpack.php';
+}
