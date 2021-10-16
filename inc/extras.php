@@ -71,25 +71,3 @@ function gatsby_excerpt_more( $more ) {
 add_filter( 'excerpt_more', 'gatsby_excerpt_more' );
 endif;
 
-
-
-/**
- * Generate custom search form
- *
- * @param string $form Form HTML.
- * @return string Modified form HTML.
- */
-function gatsby_search_form( $form ) {
-    $form = '<form role="search" method="get" id="searchform" class="search-form" action="' . esc_url( home_url( '/' ) ) . '" >
-    <label for="s">
-		<span class="screen-reader-text">' . __( 'Search for:', 'gatsby' ) . '</span>
-		<input type="text" class="search-field" placeholder="'. esc_attr__( 'Search', 'gatsby' ) .'" value="' . get_search_query() . '" name="s" id="s" />
-	</label>
-	<button type="submit" class="search-submit">
-        <i class="fa fa-search"></i>
-    </button>
-    </form>';
-
-    return $form;
-}
-add_filter( 'get_search_form', 'gatsby_search_form' );

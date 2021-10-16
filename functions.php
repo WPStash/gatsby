@@ -87,7 +87,8 @@ function gatsby_setup() {
 	 * @link https://wordpress.org/gutenberg/handbook/reference/theme-support/
 	 */
 	add_theme_support( 'align-wide' );
-
+	add_theme_support( 'wp-block-styles' );
+    add_theme_support( 'responsive-embeds' );
 
 }
 endif;

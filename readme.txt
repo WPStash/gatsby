@@ -3,9 +3,9 @@
 Contributors: famethemes
 Tags: one-column, two-columns, right-sidebar, grid-layout, footer-widgets, blog, news, photography, custom-menu, custom-header, custom-colors, custom-background, featured-images, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready
 
-Requires at least: 4.0
-Tested up to: 4.4.2
-Stable tag: 0.0.2
+Requires at least: 5.0
+Tested up to: 5.8.1
+Stable tag: 0.0.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -33,6 +33,8 @@ Gatsby is a responsive WordPress theme focused on readability with a minimalist 
 * Image use in screenshot: https://www.pexels.com/photo/runners-sports-people-fun-29353/ [CC0](https://creativecommons.org/publicdomain/zero/1.0/)
 
 == Changelog ==
+= 0.0.7 =
+* WordPress 5.8 compatible.
 
 = 0.0.6 =
 * Update Footer Author Name & Link
